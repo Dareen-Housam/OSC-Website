@@ -1,0 +1,26 @@
+.about-section {
+  padding: 40px 0;
+}
+
+.about-box {
+  background-color: var(--primary-color);
+  border-radius: 30px;
+  padding: 25px;
+  height: 100%;
+}
+
+.about-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.about-paragraph {
+  margin-bottom: 15px;
+}
+
+.presentation-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

@@ -1,0 +1,30 @@
+.footer {
+  border-top: 1px solid var(--border-color);
+  padding: 20px 0;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo {
+  margin-right: 15px;
+}
+
+.footer-text-community {
+  color: var(--gold-color);
+}
+
+.footer-text-activity {
+  color: var(--primary-color);
+}
+
+.footer-text-copyright {
+  color: var(--text-color);
+}
+
+.footer-text {
+  font-size: 0.9rem;
+}
