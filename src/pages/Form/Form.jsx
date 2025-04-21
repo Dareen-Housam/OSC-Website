@@ -1,6 +1,6 @@
 import "./Form.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +14,7 @@ const Form = () => {
   const { theme } = useTheme();
 
   const navigate = useNavigate();
-
+  const [availableCommittees, setAvailableCommittees] = useState([]);
   const [formData, setFormData] = useState({
     id: "",
     name: "",
@@ -25,8 +25,31 @@ const Form = () => {
     committee_1: "",
     committee_2: "",
     attendance_date: "",
-    // attendance_date2: "",
+    attendance_date_2: "",
   });
+
+  useEffect(() => {
+    const fetchCommittees = async () => {
+      try {
+        const res = await fetch(
+          "https://oscgeeks-server-test.vercel.app/remainings"
+        );
+        const data = await res.json();
+
+        const filteredCommittees = Object.entries(data.remainings)
+          .filter(([_, count]) => count > 0)
+          .map(([value]) => ({
+            value,
+          }));
+
+        setAvailableCommittees(filteredCommittees);
+      } catch (err) {
+        console.error("Failed to load available committees:", err);
+      }
+    };
+
+    fetchCommittees();
+  }, []);
 
   const [status, setStatus] = useState({
     loading: false,
@@ -43,9 +66,18 @@ const Form = () => {
       academic_year,
       college,
       committee_1,
+      committee_2,
       attendance_date,
+      attendance_date_2,
     } = formData;
-
+    if (committee_1 && !attendance_date) {
+      setStatus({
+        loading: false,
+        success: false,
+        message: "Please select a time slot for the Basic committee.",
+      });
+      return false;
+    }
     if (
       !id ||
       !name ||
@@ -99,6 +131,24 @@ const Form = () => {
       return false;
     }
 
+    if (committee_2 && committee_1 === committee_2) {
+      setStatus({
+        loading: false,
+        success: false,
+        message: "Optional committee must be different from basic committee.",
+      });
+      return false;
+    }
+
+    if (committee_2 && !attendance_date_2) {
+      setStatus({
+        loading: false,
+        success: false,
+        message: "Please select a time slot for the optional committee.",
+      });
+      return false;
+    }
+
     return true;
   };
 
@@ -124,7 +174,16 @@ const Form = () => {
 
     if (!validateForm()) return;
     setStatus({ loading: true, success: null, message: "" });
+
     try {
+      const transformedData = {
+        ...formData,
+        committee_1:
+          formData.committee_1 === "PR" ? "PR&LR" : formData.committee_1,
+        committee_2:
+          formData.committee_2 === "PR" ? "PR&LR" : formData.committee_2,
+      };
+
       const response = await fetch(
         "https://oscgeeks-server-test.vercel.app/add-user",
         {
@@ -132,7 +191,7 @@ const Form = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(transformedData),
         }
       );
 
@@ -170,7 +229,7 @@ const Form = () => {
   const selectTimeSlot = (type, slot) => {
     setFormData((prev) => ({
       ...prev,
-      [type === "basic" ? "attendance_date" : "attendance_date2"]: slot,
+      [type === "basic" ? "attendance_date" : "attendance_date_2"]: slot,
     }));
     setShowTimeSlots((prev) => ({
       ...prev,
@@ -178,19 +237,6 @@ const Form = () => {
     }));
   };
   const collegeOptions = ["Computer Science", "Other"];
-  const committeeOptions = [
-    "Flutter",
-    "Back-End",
-    "Front-End",
-    "Linux",
-    "Game",
-    "S&T",
-    "Blender",
-    "Media",
-    "UI/UX",
-    "PR",
-    "HR",
-  ];
   const timeSlots = [
     "TUE,9:00",
     "TUE,10:00",
@@ -291,9 +337,9 @@ const Form = () => {
                   <option value="" disabled>
                     Basic Committee
                   </option>
-                  {committeeOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  {availableCommittees.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.value}
                     </option>
                   ))}
                 </select>
@@ -350,18 +396,18 @@ const Form = () => {
                   <option value="" disabled>
                     Optional Committee
                   </option>
-                  {committeeOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  {availableCommittees.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.value}
                     </option>
                   ))}
                 </select>
-                {/* <div
+                <div
                   className="select-icon"
                   onClick={() => toggleTimeSlots("optional")}
                 >
                   <FontAwesomeIcon icon={faCalendarDays} />
-                </div> */}
+                </div>
                 {showTimeSlots.optional && (
                   <div className="time-slots-dropdown">
                     <div className="time-slots-header">
@@ -379,7 +425,9 @@ const Form = () => {
                         <div
                           key={slot}
                           className={`time-slot ${
-                            formData.attendance_date2 === slot ? "selected" : ""
+                            formData.attendance_date_2 === slot
+                              ? "selected"
+                              : ""
                           }`}
                           onClick={() => selectTimeSlot("optional", slot)}
                         >
@@ -390,9 +438,9 @@ const Form = () => {
                   </div>
                 )}
               </div>
-              {formData.attendance_date2 && (
+              {formData.attendance_date_2 && (
                 <div className="selected-time-slot">
-                  <span>Time: {formData.attendance_date2}</span>
+                  <span>Time: {formData.attendance_date_2}</span>
                 </div>
               )}
             </div>

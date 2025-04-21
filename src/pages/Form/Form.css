@@ -235,7 +235,7 @@
 .time-slots-header h4 {
   margin: 0;
   font-size: 1rem;
-  color: #333;
+  color: var(--back-ground-color);
 }
 
 .close-btn {
