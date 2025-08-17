@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# 🌐 OSC – Open Source Community  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📖 About Us  
 
-## Available Scripts
+We are **OSC (Open Source Community)**, a student activity founded on **December 5th, 2013** at **Ain Shams University – Faculty of Computer & Information Science**.  
 
-In the project directory, you can run:
+✨ Our motto: **"Don't Reinvent The Wheel"**  
+🚀 Our mission: **Promote open source philosophy and empower students through knowledge sharing.**  
 
-### `npm start`
+We believe that technology should be:  
+- 🆓 **Free to use**  
+- 📖 **Open to study, contribute, modify & share**  
+- 🤝 **Collaborative for building innovative projects**  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+👉 At OSC, **there’s a place for everyone.**  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🏛️ Committees  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We are proudly organized into **11 Committees**, each driving unique ventures:  
 
-### `npm run build`
+- 🐧 Linux  
+- 🔬 Science & Tech  
+- 🎨 Blender  
+- 🎨 UI/UX  
+- 👥 HR  
+- 📸 Media  
+- 📱 Flutter  
+- 💻 Front-End  
+- 📢 PR  
+- ⚙️ Backend  
+- 🎮 Game Development  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🌟 Website Features  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 🏠 **Homepage** with community vision & activities  
+- 📖 **About Us** section with history & mission  
+- 🧑‍🤝‍🧑 **Committees Showcase**  
+- 🎨 **Theme System** & fully **Responsive Design**  
+- 📝 **Forms**:  
+  - ✅ **Summer Training Registration** (active)  
+  - 💤 **Recruitment Form** (currently commented out for future use)  
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⚙️ Tech Stack  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- ⚛️ **React 19**  
+- 🎨 **TailwindCSS**  
+- 🟣 **Bootstrap 5**  
+- 🌐 **Firebase Hosting**  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🌍 Live Website  
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+🔗 [oscgeeks.org](https://oscgeeks.org)  
